@@ -1,0 +1,75 @@
+
+    <!DOCTYPE html>
+<html style="height:100%;">
+<head>
+<title>Page Title</title>
+</head>
+<body style="height:100%;" >
+
+ <iframe id = "main_frame" style="height:80%;width:100%" src="tinder_lead_proxy" title="W3Schools Free Online Web Tutorials"></iframe> 
+ <button type="button" onclick=clicked('kein') >Kein</button> 
+  <button type="button" onclick=clicked('niedrig') >Niedrig</button>
+   <button type="button"  onclick=clicked('mittel') >Mittel</button>
+    <button type="button"  onclick=clicked('hoch') >Hoch</button>
+
+
+
+</body>
+<script>
+
+function send(text){
+  
+  console.log(text)
+  fetch("/next_url", {
+  method: "POST",
+  body: text,
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+});
+}
+function clicked(text){
+send(text);
+document.getElementById('main_frame').contentWindow.location.reload();
+
+}
+
+function addKeyListener() {
+  // Add an event listener to the body element
+  document.body.addEventListener('keydown', function(event) {
+    const key = event.key.toLowerCase();
+
+    // Check if the pressed key is "k"
+    if (key === 'k') {
+      console.log('You pressed k.');
+      clicked('kein')
+    }
+    // Check if the pressed key is "h"
+    else if (key === 'h') {
+      console.log('You pressed h.');
+      clicked('niedrig')
+    }
+    // Check if the pressed key is "n"
+    else if (key === 'n') {
+      console.log('You pressed n.');
+      clicked('mittel')
+    }
+    // Check if the pressed key is "m"
+    else if (key === 'm') {
+      console.log('You pressed m.');
+      clicked('hoch')
+    }
+    else if (key === 'enter' || key === 'return') {
+      console.log('You pressed enter');
+      window.open("https://osmosis.page/next_url", '_blank').focus();
+
+    }
+  });
+}
+
+// Call the function to add the event listener
+addKeyListener();
+
+
+  </script>
+</html> 
