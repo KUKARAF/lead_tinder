@@ -1,6 +1,5 @@
 # Lead Management Tool
 
-![Tinder Lead Management Tool](link_to_image)
 
 ## Table of Contents
 - [Introduction](#introduction)
